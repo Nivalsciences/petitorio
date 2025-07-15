@@ -16,6 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const imprimirResumenBtn = document.getElementById('imprimirResumenBtn');
   const otrosExamenesTextarea = document.getElementById('otrosExamenes');
   const fechaInput = document.getElementById('fecha');
+  const descargarJpgBtn = document.getElementById('descargarJpgBtn');
+descargarJpgBtn.addEventListener('click', () => {
+  const resumenElement = document.querySelector('#resumenModal .modal-contenido');
+
+  html2canvas(resumenElement, { scale: 2 }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = `Resumen_${document.getElementById('paciente').value.trim() || 'Paciente'}.jpg`;
+    link.href = canvas.toDataURL('image/jpeg', 0.9);
+    link.click();
+  });
+});
+
 
   // --- 2. Establecer fecha actual por defecto ---
   if (fechaInput) {
