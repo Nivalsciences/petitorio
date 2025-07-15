@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petitorio de Exámenes Clínicos - Nival Sciences</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Logo de Nival Sciences" class="logo-img" style="height: 80px;">
+        </div>
+        <div style="text-align: center;">
+            <h1>PETITORIO DE EX<span style="font-family: 'Aesthetic Regular', sans-serif;">A</span>MENES CLÍNICOS</h1>
+            <h3>Genera y gestiona tus solicitudes de forma rápida.</h3>
+        </div>
+        <button id="toggleDark" aria-label="Alternar modo oscuro">
+            <i class="fas fa-moon"></i> <span id="modeText">Modo Oscuro</span>
+        </button>
+    </header>
+
+    <form id="examenForm">
+        <div class="datos-container">
+            <div class="medico-data">
+                <h3><i class="fas fa-user-md"></i> Datos del Médico</h3>
+                <div class="examen">
+                    <label for="medico">Nombre:</label>
+                    <input type="text" id="medico" name="medico" placeholder="Dr. [Tu Nombre]">
+                </div>
+                <div class="examen">
+                    <label for="lugar">Lugar de Trabajo:</label>
+                    <input type="text" id="lugar" name="lugar" placeholder="Hospital / Clínica">
+                </div>
+                <div class="examen">
+                    <label for="fecha">Fecha de Solicitud:</label>
+                    <input type="date" id="fecha" name="fecha">
+                </div>
+            </div>
+
+            <div class="paciente-data">
+                <h3><i class="fas fa-user"></i> Datos del Paciente</h3>
+                <div class="examen">
+                    <label for="paciente">Nombre Completo:</label>
+                    <input type="text" id="paciente" name="paciente" placeholder="Nombre Apellido">
+                </div>
+                <div class="examen">
+                    <label for="cedula">Cédula:</label>
+                    <input type="text" id="cedula" name="cedula" placeholder="V-00.000.000">
+                </div>
+                <div class="examen">
+                    <label for="direccion">Dirección:</label>
+                    <textarea id="direccion" name="direccion" rows="2" placeholder="Dirección del paciente"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-bar-container">
+            <input type="text" id="searchInput" placeholder="Buscar examen o categoría...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="examenes-secciones">
+            <div class="examen-categoria-block" data-category="Hematología">
+                <div class="seccion-header" data-target="hematologiaContenido">
+                    <h2><i class="fas fa-tint"></i> Hematología</h2>
+                    <i class="fas fa-chevron-down flecha"></i>
+                </div>
+                <div id="hematologiaContenido" class="seccion-contenido seccion-cerrada">
+                    <div class="examenes-grid">
+                        <div class="examen visible" data-name="Hematología Completa">
+                            <input type="checkbox" id="hematologia-completa" name="examenes" value="Hematología Completa">
+                            <label for="hematologia-completa">Hematología Completa</label>
+                        </div>
+                        <div class="examen visible" data-name="Tiempo de Coagulación">
+                            <input type="checkbox" id="tiempo-coagulacion" name="examenes" value="Tiempo de Coagulación">
+                            <label for="tiempo-coagulacion">Tiempo de Coagulación</label>
+                        </div>
+                        <div class="examen visible" data-name="Grupo Sanguíneo y Factor RH">
+                            <input type="checkbox" id="grupo-sanguineo" name="examenes" value="Grupo Sanguíneo y Factor RH">
+                            <label for="grupo-sanguineo">Grupo Sanguíneo y Factor RH</label>
+                        </div>
+                        <div class="examen visible" data-name="Reticulocitos">
+                            <input type="checkbox" id="reticulocitos" name="examenes" value="Reticulocitos">
+                            <label for="reticulocitos">Reticulocitos</label>
+                        </div>
+                        <div class="examen visible" data-name="Velocidad de Sedimentación Globular">
+                            <input type="checkbox" id="vsg" name="examenes" value="Velocidad de Sedimentación Globular">
+                            <label for="vsg">Velocidad de Sedimentación Globular</label>
+                        </div>
+                        <div class="examen visible" data-name="PT, PTT e INR">
+                            <input type="checkbox" id="pt-ptt-inr" name="examenes" value="PT, PTT e INR">
+                            <label for="pt-ptt-inr">PT, PTT e INR</label>
+                        </div>
+                        <div class="examen visible" data-name="Fibrinógeno">
+                            <input type="checkbox" id="fibrinogeno" name="examenes" value="Fibrinógeno">
+                            <label for="fibrinogeno">Fibrinógeno</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examen-categoria-block" data-category="Química Sanguínea">
+                <div class="seccion-header" data-target="quimicaContenido">
+                    <h2><i class="fas fa-flask"></i> Química Sanguínea</h2>
+                    <i class="fas fa-chevron-down flecha"></i>
+                </div>
+                <div id="quimicaContenido" class="seccion-contenido seccion-cerrada">
+                    <div class="examenes-grid">
+                        <div class="examen visible" data-name="Glicemia en Ayunas">
+                            <input type="checkbox" id="glicemia" name="examenes" value="Glicemia en Ayunas">
+                            <label for="glicemia">Glicemia en Ayunas</label>
+                        </div>
+                        <div class="examen visible" data-name="Creatinina">
+                            <input type="checkbox" id="creatinina" name="examenes" value="Creatinina">
+                            <label for="creatinina">Creatinina</label>
+                        </div>
+                        <div class="examen visible" data-name="Urea">
+                            <input type="checkbox" id="urea" name="examenes" value="Urea">
+                            <label for="urea">Urea</label>
+                        </div>
+                        <div class="examen visible" data-name="Ácido Úrico">
+                            <input type="checkbox" id="acido-urico" name="examenes" value="Ácido Úrico">
+                            <label for="acido-urico">Ácido Úrico</label>
+                        </div>
+                        <div class="examen visible" data-name="Perfil Lipídico">
+                            <input type="checkbox" id="perfil-lipidico" name="examenes" value="Perfil Lipídico">
+                            <label for="perfil-lipidico">Perfil Lipídico (Colesterol Total, HDL, LDL, VLDL, Triglicéridos)</label>
+                        </div>
+                        <div class="examen visible" data-name="Electrolitos">
+                            <input type="checkbox" id="electrolitos" name="examenes" value="Electrolitos">
+                            <label for="electrolitos">Electrolitos (Sodio, Potasio, Cloro)</label>
+                        </div>
+                        <div class="examen visible" data-name="Calcio Sérico">
+                            <input type="checkbox" id="calcio-serico" name="examenes" value="Calcio Sérico">
+                            <label for="calcio-serico">Calcio Sérico</label>
+                        </div>
+                        <div class="examen visible" data-name="Fósforo Sérico">
+                            <input type="checkbox" id="fosforo-serico" name="examenes" value="Fósforo Sérico">
+                            <label for="fosforo-serico">Fósforo Sérico</label>
+                        </div>
+                        <div class="examen visible" data-name="Bilirrubina Total y Fraccionada">
+                            <input type="checkbox" id="bilirrubina" name="examenes" value="Bilirrubina Total y Fraccionada">
+                            <label for="bilirrubina">Bilirrubina Total y Fraccionada</label>
+                        </div>
+                        <div class="examen visible" data-name="Transaminasas (TGO, TGP)">
+                            <input type="checkbox" id="transaminasas" name="examenes" value="Transaminasas (TGO, TGP)">
+                            <label for="transaminasas">Transaminasas (TGO, TGP)</label>
+                        </div>
+                        <div class="examen visible" data-name="Fosfatasa Alcalina">
+                            <input type="checkbox" id="fosfatasa-alcalina" name="examenes" value="Fosfatasa Alcalina">
+                            <label for="fosfatasa-alcalina">Fosfatasa Alcalina</label>
+                        </div>
+                        <div class="examen visible" data-name="Proteínas Totales y Fraccionadas">
+                            <input type="checkbox" id="proteinas" name="examenes" value="Proteínas Totales y Fraccionadas">
+                            <label for="proteinas">Proteínas Totales y Fraccionadas</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examen-categoria-block" data-category="Orina y Heces">
+                <div class="seccion-header" data-target="orinaHecesContenido">
+                    <h2><i class="fas fa-toilet"></i> Orina y Heces</h2>
+                    <i class="fas fa-chevron-down flecha"></i>
+                </div>
+                <div id="orinaHecesContenido" class="seccion-contenido seccion-cerrada">
+                    <div class="examenes-grid">
+                        <div class="examen visible" data-name="Examen General de Orina">
+                            <input type="checkbox" id="orina-general" name="examenes" value="Examen General de Orina">
+                            <label for="orina-general">Examen General de Orina</label>
+                        </div>
+                        <div class="examen visible" data-name="Urocultivo con Antibiograma">
+                            <input type="checkbox" id="urocultivo" name="examenes" value="Urocultivo con Antibiograma">
+                            <label for="urocultivo">Urocultivo con Antibiograma</label>
+                        </div>
+                        <div class="examen visible" data-name="Coprologico">
+                            <input type="checkbox" id="coprologico" name="examenes" value="Coprologico">
+                            <label for="coprologico">Coprológico</label>
+                        </div>
+                        <div class="examen visible" data-name="Coprocultivo">
+                            <input type="checkbox" id="coprocultivo" name="examenes" value="Coprocultivo">
+                            <label for="coprocultivo">Coprocultivo</label>
+                        </div>
+                        <div class="examen visible" data-name="Sangre Oculta en Heces">
+                            <input type="checkbox" id="sangre-oculta" name="examenes" value="Sangre Oculta en Heces">
+                            <label for="sangre-oculta">Sangre Oculta en Heces</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examen-categoria-block" data-category="Inmunología y Serología">
+                <div class="seccion-header" data-target="inmunologiaContenido">
+                    <h2><i class="fas fa-vial"></i> Inmunología y Serología</h2>
+                    <i class="fas fa-chevron-down flecha"></i>
+                </div>
+                <div id="inmunologiaContenido" class="seccion-contenido seccion-cerrada">
+                    <div class="examenes-grid">
+                        <div class="examen visible" data-name="VSDRL / RPR">
+                            <input type="checkbox" id="vdrl-rpr" name="examenes" value="VDRL / RPR">
+                            <label for="vdrl-rpr">VDRL / RPR</label>
+                        </div>
+                        <div class="examen visible" data-name="HIV 1/2">
+                            <input type="checkbox" id="hiv" name="examenes" value="HIV 1/2">
+                            <label for="hiv">HIV 1/2</label>
+                        </div>
+                        <div class="examen visible" data-name="PCR (Proteína C Reactiva)">
+                            <input type="checkbox" id="pcr" name="examenes" value="PCR (Proteína C Reactiva)">
+                            <label for="pcr">PCR (Proteína C Reactiva)</label>
+                        </div>
+                        <div class="examen visible" data-name="Factor Reumatoide">
+                            <input type="checkbox" id="factor-reumatoide" name="examenes" value="Factor Reumatoide">
+                            <label for="factor-reumatoide">Factor Reumatoide</label>
+                        </div>
+                        <div class="examen visible" data-name="Antiestreptolisina O (ASO)">
+                            <input type="checkbox" id="aso" name="examenes" value="Antiestreptolisina O (ASO)">
+                            <label for="aso">Antiestreptolisina O (ASO)</label>
+                        </div>
+                        <div class="examen visible" data-name="Antígenos Febriles">
+                            <input type="checkbox" id="antigenos-febriles" name="examenes" value="Antígenos Febriles">
+                            <label for="antigenos-febriles">Antígenos Febriles (Weil-Felix, Huddleson, etc.)</label>
+                        </div>
+                        <div class="examen visible" data-name="Hepatitis B (HBsAg)">
+                            <input type="checkbox" id="hbsag" name="examenes" value="Hepatitis B (HBsAg)">
+                            <label for="hbsag">Hepatitis B (HBsAg)</label>
+                        </div>
+                        <div class="examen visible" data-name="Hepatitis C (Anti-HVC)">
+                            <input type="checkbox" id="anti-hvc" name="examenes" value="Hepatitis C (Anti-HVC)">
+                            <label for="anti-hvc">Hepatitis C (Anti-HVC)</label>
+                        </div>
+                        <div class="examen visible" data-name="Toxoplasma IgG/IgM">
+                            <input type="checkbox" id="toxoplasma" name="examenes" value="Toxoplasma IgG/IgM">
+                            <label for="toxoplasma">Toxoplasma IgG/IgM</label>
+                        </div>
+                        <div class="examen visible" data-name="Rubeola IgG/IgM">
+                            <input type="checkbox" id="rubeola" name="examenes" value="Rubeola IgG/IgM">
+                            <label for="rubeola">Rubeola IgG/IgM</label>
+                        </div>
+                        <div class="examen visible" data-name="Citomegalovirus IgG/IgM">
+                            <input type="checkbox" id="citomegalovirus" name="examenes" value="Citomegalovirus IgG/IgM">
+                            <label for="citomegalovirus">Citomegalovirus IgG/IgM</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examen-categoria-block" data-category="Hormonas">
+                <div class="seccion-header" data-target="hormonasContenido">
+                    <h2><i class="fas fa-thermometer-half"></i> Hormonas</h2>
+                    <i class="fas fa-chevron-down flecha"></i>
+                </div>
+                <div id="hormonasContenido" class="seccion-contenido seccion-cerrada">
+                    <div class="examenes-grid">
+                        <div class="examen visible" data-name="TSH">
+                            <input type="checkbox" id="tsh" name="examenes" value="TSH">
+                            <label for="tsh">TSH</label>
+                        </div>
+                        <div class="examen visible" data-name="T3 Total y Libre">
+                            <input type="checkbox" id="t3" name="examenes" value="T3 Total y Libre">
+                            <label for="t3">T3 Total y Libre</label>
+                        </div>
+                        <div class="examen visible" data-name="T4 Total y Libre">
+                            <input type="checkbox" id="t4" name="examenes" value="T4 Total y Libre">
+                            <label for="t4">T4 Total y Libre</label>
+                        </div>
+                        <div class="examen visible" data-name="Progesterona">
+                            <input type="checkbox" id="progesterona" name="examenes" value="Progesterona">
+                            <label for="progesterona">Progesterona</label>
+                        </div>
+                        <div class="examen visible" data-name="Estradiol">
+                            <input type="checkbox" id="estradiol" name="examenes" value="Estradiol">
+                            <label for="estradiol">Estradiol</label>
+                        </div>
+                        <div class="examen visible" data-name="Testosterona Total y Libre">
+                            <input type="checkbox" id="testosterona" name="examenes" value="Testosterona Total y Libre">
+                            <label for="testosterona">Testosterona Total y Libre</label>
+                        </div>
+                        <div class="examen visible" data-name="Prolactina">
+                            <input type="checkbox" id="prolactina" name="examenes" value="Prolactina">
+                            <label for="prolactina">Prolactina</label>
+                        </div>
+                        <div class="examen visible" data-name="Cortisol">
+                            <input type="checkbox" id="cortisol" name="examenes" value="Cortisol">
+                            <label for="cortisol">Cortisol</label>
+                        </div>
+                        <div class="examen visible" data-name="Insulina">
+                            <input type="checkbox" id="insulina" name="examenes" value="Insulina">
+                            <label for="insulina">Insulina</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examen-categoria-block" data-category="Marcadores Tumorales">
+                <div class="seccion-header" data-target="marcadoresContenido">
+                    <h2><i class="fas fa-dna"></i> Marcadores Tumorales</h2>
+                    <i class="fas fa-chevron-down flecha"></i>
+                </div>
+                <div id="marcadoresContenido" class="seccion-contenido seccion-cerrada">
+                    <div class="examenes-grid">
+                        <div class="examen visible" data-name="PSA Total y Libre">
+                            <input type="checkbox" id="psa" name="examenes" value="PSA Total y Libre">
+                            <label for="psa">PSA Total y Libre</label>
+                        </div>
+                        <div class="examen visible" data-name="CEA (Antígeno Carcinoembrionario)">
+                            <input type="checkbox" id="cea" name="examenes" value="CEA (Antígeno Carcinoembrionario)">
+                            <label for="cea">CEA (Antígeno Carcinoembrionario)</label>
+                        </div>
+                        <div class="examen visible" data-name="CA 125">
+                            <input type="checkbox" id="ca125" name="examenes" value="CA 125">
+                            <label for="ca125">CA 125</label>
+                        </div>
+                        <div class="examen visible" data-name="CA 15-3">
+                            <input type="checkbox" id="ca153" name="examenes" value="CA 15-3">
+                            <label for="ca153">CA 15-3</label>
+                        </div>
+                        <div class="examen visible" data-name="CA 19-9">
+                            <input type="checkbox" id="ca199" name="examenes" value="CA 19-9">
+                            <label for="ca199">CA 19-9</label>
+                        </div>
+                        <div class="examen visible" data-name="Alfa-fetoproteína (AFP)">
+                            <input type="checkbox" id="afp" name="examenes" value="Alfa-fetoproteína (AFP)">
+                            <label for="afp">Alfa-fetoproteína (AFP)</label>
+                        </div>
+                        <div class="examen visible" data-name="Beta-hCG (Cuantitativa)">
+                            <input type="checkbox" id="bhcg" name="examenes" value="Beta-hCG (Cuantitativa)">
+                            <label for="bhcg">Beta-hCG (Cuantitativa)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="otros-examenes-block">
+                <h3>Otros Exámenes No Listados</h3>
+                <textarea id="otrosExamenes" name="otrosExamenes" rows="4" placeholder="Escribe aquí cualquier otro examen no especificado en las categorías anteriores, uno por línea."></textarea>
+            </div>
+        </div>
+
+        <div class="botones-acciones">
+            <button type="button" id="verResumenBtn"><i class="fas fa-file-alt"></i> Ver Resumen</button>
+            <button type="button" id="limpiarFormularioBtn"><i class="fas fa-trash-alt"></i> Limpiar Formulario</button>
+        </div>
+    </form>
+
+    <div id="resumenModal" class="modal">
+        <div class="modal-contenido">
+            <button class="cerrar-modal" id="cerrarModal" aria-label="Cerrar modal"><i class="fas fa-times"></i></button>
+            
+            <div id="encabezadoImpresion" style="text-align: center;">
+                <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                    <img src="assets/logo.png" alt="Logo de Nival Sciences" style="height: 70px; margin-right: 10px;">
+                    <div>
+                        <h1 style="margin: 0; color: #3498db; font-size: 1.8rem; font-family: 'Aesthetic Regular', sans-serif;">NIVAL SCIENCES C.A.</h1>
+                        <p style="margin: 0; font-size: 0.9rem; color: #555;">RIF J-50478051-0</p>
+                        <p style="margin: 0; font-size: 0.9rem; color: #555;">Laboratorio Clínico Especializado</p>
+                    </div>
+                </div>
+                <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #555;">Teléfono: 0414-5555555 | Email: info@nivalsciences.com</p>
+                <p style="margin: 0; font-size: 0.9rem; color: #555;">Dirección: Calle 1, Edif. X, Piso Y, Urb. Z, Barquisimeto</p>
+            </div>
+
+
+            <h2>Resumen de Solicitud de Exámenes</h2>
+            <div id="contenidoResumen">
+                </div>
+            <div class="modal-botones">
+                <button type="button" id="generarPdfBtn"><i class="fas fa-file-pdf"></i> Generar PDF</button>
+                <button type="button" id="imprimirResumenBtn"><i class="fas fa-print"></i> Imprimir</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
