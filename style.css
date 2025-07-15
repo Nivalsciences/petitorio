@@ -614,6 +614,33 @@ input[type="checkbox"] {
   color: var(--text);
 }
 
+/* Estilos para toast container */
+#toastContainer {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+}
+
+.toast {
+  background-color: var(--accent);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  font-size: 0.95rem;
+  animation: fadeInOut 3.5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+
 /* Estilos para impresión */
 @media print {
   body {
