@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const icon = toggleDarkBtn.querySelector('i');
         if (isDarkMode) {
             icon.classList.replace('fa-moon', 'fa-sun'); // Cambia a icono de sol
-            modeTextSpan.textContent = 'Modo Claro'; // Cambia el texto del botón
+            modeTextSpan.textContent = ''; // Cambia el texto del botón
         } else {
             icon.classList.replace('fa-sun', 'fa-moon'); // Cambia a icono de luna
-            modeTextSpan.textContent = 'Modo Oscuro'; // Cambia el texto del botón
+            modeTextSpan.textContent = ''; // Cambia el texto del botón
         }
     });
 
