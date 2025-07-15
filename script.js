@@ -19,12 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const descargarJpgBtn = document.getElementById('descargarJpgBtn');
 descargarJpgBtn.addEventListener('click', () => {
   const resumenElement = document.querySelector('#resumenModal .modal-contenido');
+  function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.getElementById('toastContainer').appendChild(toast);
+  setTimeout(() => toast.remove(), 4000);
+}
+
 
   html2canvas(resumenElement, { scale: 2 }).then(canvas => {
     const link = document.createElement('a');
     link.download = `Resumen_${document.getElementById('paciente').value.trim() || 'Paciente'}.jpg`;
     link.href = canvas.toDataURL('image/jpeg', 0.9);
     link.click();
+    showToast('Resumen descargado como imagen JPG');
   });
 });
 
@@ -43,17 +52,19 @@ descargarJpgBtn.addEventListener('click', () => {
   }
 
   toggleDarkBtn.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    const isDarkMode = body.classList.contains('dark-mode');
-    localStorage.setItem('darkMode', isDarkMode);
+  body.classList.toggle('dark-mode');
+  const isDarkMode = body.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', isDarkMode);
 
-    const icon = toggleDarkBtn.querySelector('i');
-    if (isDarkMode) {
-      icon.classList.replace('fa-moon', 'fa-sun');
-    } else {
-      icon.classList.replace('fa-sun', 'fa-moon');
-    }
-  });
+  const icon = toggleDarkBtn.querySelector('i');
+  if (isDarkMode) {
+    icon.classList.replace('fa-moon', 'fa-sun');
+    showToast('Modo oscuro activado');
+  } else {
+    icon.classList.replace('fa-sun', 'fa-moon');
+    showToast('Modo claro activado');
+  }
+});
 
   // --- 4. Búsqueda ---
   searchInput.addEventListener('input', () => {
