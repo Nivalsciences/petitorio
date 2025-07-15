@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Petitorio de Exámenes Clínicos - Nival Sciences</title>
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     @font-face {
       font-family: 'Aesthetic Regular';
@@ -19,54 +19,57 @@
 </head>
 <body>
 
+  <!-- 🧬 Encabezado principal con logo y título -->
   <header>
-    <div class="logo-container">
-      <img src="assets/logo.png" alt="Logo de Nival Sciences" class="logo-img" style="height: 80px;">
-
-    <div style="text-align: center;">
-      <h1>PETITORIO DE EX<span style="font-family: 'Aesthetic Regular';">A</span>MENES CLÍNICOS</h1>
-      <h3>Genera y gestiona tus solicitudes de forma rápida.</h3>
-          </div>
+    <div class="encabezado-principal">
+      <img src="assets/logo.png" alt="Logo de Nival Sciences" class="logo-img" />
+      <div>
+        <h1>PETITORIO DE EX<span style="font-family: 'Aesthetic Regular';">A</span>MENES CLÍNICOS</h1>
+        <h3>Genera y gestiona tus solicitudes de forma rápida.</h3>
+      </div>
     </div>
-    
   </header>
-      <button id="toggleDark" aria-label="Alternar modo oscuro">
-      <i class="fas fa-moon"></i>
-      </button>
-    <form id="examenForm">
-        <div class="datos-container">
-            <div class="medico-data">
-                <h3><i class="fas fa-user-md"></i> Datos del Médico</h3>
-                <div class="examen">
-                    <label for="medico">Nombre:</label>
-                    <input type="text" id="medico" name="medico" placeholder="Dr. [Tu Nombre]">
-                </div>
-                <div class="examen">
-                    <label for="lugar">Lugar de Trabajo:</label>
-                    <input type="text" id="lugar" name="lugar" placeholder="Hospital / Clínica">
-                </div>
-                <div class="examen">
-                    <label for="fecha">Fecha de Solicitud:</label>
-                    <input type="date" id="fecha" name="fecha">
-                </div>
-            </div>
 
-            <div class="paciente-data">
-                <h3><i class="fas fa-user"></i> Datos del Paciente</h3>
-                <div class="examen">
-                    <label for="paciente">Nombre Completo:</label>
-                    <input type="text" id="paciente" name="paciente" placeholder="Nombre Apellido">
-                </div>
-                <div class="examen">
-                    <label for="cedula">Cédula:</label>
-                    <input type="text" id="cedula" name="cedula" placeholder="V-00.000.000">
-                </div>
-                <div class="examen">
-                    <label for="direccion">Dirección:</label>
-                    <textarea id="direccion" name="direccion" rows="2" placeholder="Dirección del paciente"></textarea>
-                </div>
-            </div>
+  <!-- ☀️🌙 Botón de modo oscuro flotante -->
+  <button id="toggleDark" aria-label="Alternar modo oscuro">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- 📋 Formulario de datos -->
+  <form id="examenForm">
+    <div class="datos-container">
+      <div class="medico-data">
+        <h3><i class="fas fa-user-md"></i> Datos del Médico</h3>
+        <div class="examen">
+          <label for="medico">Nombre</label>
+          <input type="text" id="medico" />
         </div>
+        <div class="examen">
+          <label for="lugar">Lugar de Trabajo</label>
+          <input type="text" id="lugar" />
+        </div>
+        <div class="examen">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" />
+        </div>
+      </div>
+
+      <div class="paciente-data">
+        <h3><i class="fas fa-user"></i> Datos del Paciente</h3>
+        <div class="examen">
+          <label for="paciente">Nombre</label>
+          <input type="text" id="paciente" />
+        </div>
+        <div class="examen">
+          <label for="cedula">Cédula</label>
+          <input type="text" id="cedula" />
+        </div>
+        <div class="examen">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" />
+        </div>
+      </div>
+    </div>
 
         <div class="search-bar-container">
             <input type="text" id="searchInput" placeholder="Buscar examen o categoría...">
@@ -395,7 +398,7 @@
       </div>
     </div>
   </div>
-
+<div id="toastContainer"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -410,7 +413,6 @@
       }
     });
   </script>
-  <div id="toastContainer"></div>
 
 </body>
 </html>
