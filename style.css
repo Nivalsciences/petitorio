@@ -83,34 +83,22 @@ header h3 {
 
 /* Botón modo oscuro */
 #toggleDark {
-  position: absolute;
-  top: 20px;
+  position: fixed;
+  bottom: 20px;
   right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  cursor: pointer;
-  color: var(--accent);
-  padding: 8px;
-  border-radius: 50%;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: var(--accent);
+  color: white;
+  font-size: 1.5rem;
+  padding: 12px;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #toggleDark:hover {
-  background-color: rgba(var(--accent-rgb), 0.1);
-  transform: scale(1.05);
-}
-
-#toggleDark:active {
-  transform: scale(0.95);
-}
-
-.dark-mode #toggleDark {
-  color: var(--accent);
+  background-color: #2980b9;
+  transform: scale(1.1);
 }
 
 /* Formulario */
